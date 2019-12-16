@@ -31,19 +31,8 @@ class Queue:
         # just simply return the size
 
 
-# TESTS
-# print(Queue.enqueue(5))  # prints True
-# print(Queue.enqueue(6))  # prints True
-# print(Queue.enqueue(9))  # prints True
-# print(Queue.enqueue(5))  # prints False
-# print(Queue.enqueue(3))  # prints True
-# print(Queue.len())  # prints 4
-# print(Queue.dequeue())  # prints 5
-# print(Queue.dequeue())  # prints 6
-# print(Queue.dequeue())  # prints 9
-# print(Queue.dequeue())  # prints 3
-# print(Queue.len())  # prints 0
-# print(Queue.dequeue())  # prints Queue Empty!
-
 # NOTES
 # - you cannot add or remove from the middle of a queue
+# - study the doubly_linked_list file for defs
+# - With a queue you remove the item least recently added
+# (first-in, first-out or FIFO);

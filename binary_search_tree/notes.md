@@ -4,6 +4,7 @@
 - Tells us if a path even exists, not the shortest path
 - Traverse down a single path, one child node at a time
 - sticks with one path, following that path down a graph structure until it ends
+- Stack
 
 # BREADTH-FIRST SEARCH
 
@@ -11,3 +12,4 @@
 - Good for finding the shortest path b/w 2 nodes on a graph
 - Traverse thru a graph one level of children at a time
 - evaluates all the possible paths from a given node equally, checking all potential vertices from one node together, and comparing them simultaneously
+- Queue

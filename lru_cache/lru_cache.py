@@ -35,6 +35,7 @@ class LRUCache:
             return node.value[1]
             # ^ return the value associated with that node
         else:
+            print("else")
             return None
             # ^ if it cant find it, it does not exist
 
@@ -68,11 +69,11 @@ class LRUCache:
             self.dll.remove_from_head()  # also delete from dll
             # delete the key for the last (tail) value in the dictionary
             self.size -= 1  # reduce length by 1
-            self.dll.add_to_head((key, value))
-            # ^ now add new value to the head of the dll
-            self.storage[key] = self.dll.head
-            # ^ aso add the key to the storage dictionary
-            self.size += 1  # increase the length counter
+        self.dll.add_to_head((key, value))
+        # ^ now add new value to the head of the dll
+        self.storage[key] = self.dll.head
+        # ^ aso add the key to the storage dictionary
+        self.size += 1  # increase the length counter
 
     ## NOTES ##
     # LRU cache (Least Recently Used) cache is an in-memory storage structure

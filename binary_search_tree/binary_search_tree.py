@@ -87,16 +87,17 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        if self.value:  # if it exists
-            if self.left:
-                # ^ first recur on the left child
-                self.left.in_order_print(self.left)
-            print(self.value)
-            # ^ then print the data of the node
-            if self.right:
-                # ^ now check the right side if it exists
-                self.right.in_order_print(self.right)
-            print(self.value)  # print the right side
+        # if node is None: ## you dont need this bc a node cant be empty to begin with 
+        #     return
+        # if self.value:  # if it exists
+        if node.left:
+            # ^ first recur on the left child
+            node.left.in_order_print(node.left)
+        print(node.value) # this is the base case (will happen no matter what)
+        # ^ then print the data of the node
+        if node.right:
+            # ^ now check the right side if it exists
+            node.right.in_order_print(node.right)
 
     # ^if there is a left node, then pass that into the function to print it.
     # ^You can’t just assume there is a self.left

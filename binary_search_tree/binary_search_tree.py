@@ -7,9 +7,9 @@ from dll_queue import Queue
 
 class BinarySearchTree:
     def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
+        self.value = value  # the value at the current node
+        self.left = None  # reference to this node's left child
+        self.right = None  # reference to this node's right child
 
     # Insert the given value into the tree
     def insert(self, value):
@@ -51,20 +51,23 @@ class BinarySearchTree:
     # Return the maximum value found in the tree
 
     def get_max(self):
+        if not self:
+            return None  # check if tree is empty
         # if right exists, go right. Otherwise return self.value
-        if self.right:
-            return self.right.get_max()  # recursion
-        else:
+        if not self.right:
             return self.value  # if nothing to the right
+        return self.right.get_max()  # recursion
 
     def for_each(self, cb):
         # Call the function `cb` on the value of each node
         # You may use a recursive or iterative approach
-        cb(self.value)  # recursive solution
-        if self.left:
-            self.left.for_each(cb)
-        if self.right:
-            self.right.for_each(cb)
+
+        ### RECURSIVE APPROACH COMMENTED OUT BELOW ###
+        # cb(self.value)  # recursive solution
+        # if self.left:
+        #     self.left.for_each(cb)
+        # if self.right:
+        #     self.right.for_each(cb)
 
         # ITERATIVE APPROACH:
         # use a loop and a stack that was imported
@@ -110,14 +113,15 @@ class BinarySearchTree:
         # ^ this puts the current node in the queue by callling enqueue
         while queue.len() > 0:
             # ^ as long as the queue is not empty
-            print(node.value)  # print it
-            if node.left:
+            current = queue.dequeue()
+            print(current.value)  # print it
+            if current.left:
                 # ^ now look to see if that node has a left child
-                queue.enqueue(node.left)
+                queue.enqueue(current.left)
                 # ^ if so, add that node to the queue
-            if node.right:
+            if current.right:
                 # ^ if it has a right child, add that one as well
-                queue.enqueue(node.right)
+                queue.enqueue(current.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
@@ -126,12 +130,13 @@ class BinarySearchTree:
         stack = Stack()  # set up an empty stack
         stack.push(node)  # push a node onto the stack
         while stack.len() > 0:  # as long as there are nodes in the stack
-            node = stack.pop()  # pop off from the top of the stack
-            print(node.value)
-            if node.left:  # check if the node has a left child
-                stack.push(node.left)  # if so, push that child onto the stack
-            if node.right:  # now check if that node has a right child
-                stack.push(node.right)  # if so, push that onto the stack
+            current = stack.pop()  # pop off from the top of the stack
+            print(current.value)
+            if current.left:  # check if the node has a left child
+                # if so, push that child onto the stack
+                stack.push(current.left)
+            if current.right:  # now check if that node has a right child
+                stack.push(current.right)  # if so, push that onto the stack
 
         # STRETCH Goals -------------------------
         # Note: Research may be required

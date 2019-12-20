@@ -123,7 +123,15 @@ class BinarySearchTree:
     # in an iterative depth first traversal
 
     def dft_print(self, node):  # use a stack add and remove from head
-        stack = Stack()
+        stack = Stack()  # set up an empty stack
+        stack.push(node)  # push a node onto the stack
+        while stack.len() > 0:  # as long as there are nodes in the stack
+            node = stack.pop()  # pop off from the top of the stack
+            print(node.value)
+            if node.left:  # check if the node has a left child
+                stack.push(node.left)  # if so, push that child onto the stack
+            if node.right:  # now check if that node has a right child
+                stack.push(node.right)  # if so, push that onto the stack
 
         # STRETCH Goals -------------------------
         # Note: Research may be required
